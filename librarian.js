@@ -9,29 +9,51 @@ var library = [
 
 /* Task 1 */
 function getBookTitle( index ){
-  //add code
+  return library[index].title;
 }
 
 console.log(getBookTitle(3));
 
 /* Task 3 */
 function addBook( book ){
-  //add code
+  library[library.length] = book;
+  return library;
 }
 
-var newBook = {};
+var newBook = {title: "The book thief", year:"2005", author:"Markus Zusak", publisher:"Markus Zusak"};
 console.log(addBook(newBook));
 
 /* Task 4 */
 function bookByAuthor(){
-  //add code
+    library.sort(function(a, b) {
+      var nameA = a.author.toUpperCase(); // ignore upper and lowercase
+      var nameB = b.author.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+
+      // names must be equal
+      return 0;
+    });
+    return library;
 }
 
 console.log(bookByAuthor());
 
 /* Task 5 */
 function findByTitle( title ){
-  //add code
+    function findByTitle( title ){
+    var result = [];
+    for(var i=0; i<library.length; i++){
+      if(library[i].title.toUpperCase().indexOf(title.toUpperCase()) >= 0){
+        result[result.length] = library[i];
+      }
+    }
+    return result;
+    }
 }
 
 console.log(findByTitle("man"));
